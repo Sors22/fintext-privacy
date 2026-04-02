@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinText – Support</title>
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #1d1d1f;
+            --muted: #6e6e73;
+            --border: #d2d2d7;
+            --accent: #0071e3;
+            --card-bg: #ffffff;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1c1c1e;
+                --text: #f5f5f7;
+                --muted: #a1a1a6;
+                --border: #38383a;
+                --accent: #2997ff;
+                --card-bg: #2c2c2e;
+            }
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 34px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+        header .subtitle {
+            font-size: 17px;
+            color: var(--muted);
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: -0.2px;
+        }
+        .card p {
+            font-size: 16px;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-bottom: 8px;
+        }
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+        .card a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .card a:hover {
+            text-decoration: underline;
+        }
+        .faq {
+            margin-top: 40px;
+        }
+        .faq h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        details {
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+        details:first-of-type {
+            border-top: 1px solid var(--border);
+        }
+        summary {
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary::after {
+            content: "+";
+            font-size: 22px;
+            font-weight: 300;
+            color: var(--muted);
+            transition: transform 0.2s;
+        }
+        details[open] summary::after {
+            content: "\2212";
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        details p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.65;
+            margin-top: 12px;
+        }
+        .links {
+            margin-top: 40px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .links a {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--accent);
+            color: #ffffff;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .links a:hover {
+            opacity: 0.88;
+        }
+        .links a.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--accent);
+        }
+        footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FinText Support</h1>
+            <p class="subtitle">Hilfe und Kontakt f&uuml;r die FinText App</p>
+        </header>
+
+        <div class="card">
+            <h2>Kontakt</h2>
+            <p>
+                Bei Fragen, Problemen oder Feedback erreichst du uns per E-Mail.
+                Wir antworten in der Regel innerhalb von 48 Stunden.
+            </p>
+            <p><a href="mailto:fintext@web.de">fintext@web.de</a></p>
+        </div>
+
+        <div class="card">
+            <h2>Systemvoraussetzungen</h2>
+            <p>iPhone oder iPad mit iOS 17.0 oder neuer.</p>
+            <p>F&uuml;r die Zusammenarbeit: Apple-ID mit aktiviertem iCloud Drive.</p>
+        </div>
+
+        <div class="card">
+            <h2>Datenschutz</h2>
+            <p>
+                FinText erhebt keine Nutzerdaten. Alle Finanzdaten bleiben lokal auf
+                deinem Ger&auml;t oder in deinem eigenen iCloud-Container.
+                Kein Tracking, keine Werbung, keine Drittanbieter.
+            </p>
+            <p><a href="https://sors22.github.io/fintext-privacy/">Datenschutzerkl&auml;rung lesen</a></p>
+        </div>
+
+        <section class="faq">
+            <h2>H&auml;ufige Fragen</h2>
+
+            <details>
+                <summary>Wo werden meine Daten gespeichert?</summary>
+                <p>
+                    Alle Finanzdaten werden ausschlie&szlig;lich lokal auf deinem Ger&auml;t gespeichert.
+                    Wenn du die optionale iCloud-Synchronisation aktivierst, werden die Daten
+                    zus&auml;tzlich in deinem pers&ouml;nlichen iCloud-Container abgelegt &mdash;
+                    der Entwickler hat darauf keinen Zugriff.
+                </p>
+            </details>
+
+            <details>
+                <summary>Wie teile ich meinen Haushalt mit meinem Partner?</summary>
+                <p>
+                    Gehe in den Reiter &bdquo;Mehr&ldquo; und aktiviere die Zusammenarbeit.
+                    Melde dich mit deiner Apple-ID an und erstelle einen Einladungslink.
+                    Dein Partner &ouml;ffnet den Link auf seinem Ger&auml;t und tritt dem
+                    geteilten Haushalt bei.
+                </p>
+            </details>
+
+            <details>
+                <summary>Kann ich bestehende Daten aus Excel importieren?</summary>
+                <p>
+                    Ja. FinText unterst&uuml;tzt den Import von .xlsx-Dateien.
+                    Gehe in die Einstellungen und w&auml;hle &bdquo;Import&ldquo;.
+                    Das Format wird automatisch erkannt und die Daten zugeordnet.
+                </p>
+            </details>
+
+            <details>
+                <summary>Was passiert wenn ich die App l&ouml;sche?</summary>
+                <p>
+                    Alle lokal gespeicherten Daten werden unwiderruflich gel&ouml;scht.
+                    Falls du iCloud-Synchronisation nutzt, bleiben die Daten in deinem
+                    iCloud-Container erhalten und k&ouml;nnen bei Neuinstallation
+                    wiederhergestellt werden. Du kannst iCloud-Daten jederzeit &uuml;ber
+                    die Ger&auml;teeinstellungen l&ouml;schen.
+                </p>
+            </details>
+
+            <details>
+                <summary>Ist die App kostenlos?</summary>
+                <p>
+                    Ja. FinText ist vollst&auml;ndig kostenlos, ohne In-App-K&auml;ufe,
+                    ohne Abonnements und ohne Werbung.
+                </p>
+            </details>
+
+            <details>
+                <summary>Welche Berechtigungen ben&ouml;tigt die App?</summary>
+                <p>
+                    FinText ben&ouml;tigt keine besonderen Berechtigungen.
+                    Kein Zugriff auf Kamera, Fotos, Standort, Kontakte oder Mikrofon.
+                    Die einzige optionale Berechtigung ist iCloud f&uuml;r die Synchronisation.
+                </p>
+            </details>
+
+            <details>
+                <summary>Ich habe einen Bug gefunden. Was soll ich tun?</summary>
+                <p>
+                    Sende uns eine E-Mail an
+                    <a href="mailto:fintext@web.de">fintext@web.de</a> mit einer
+                    kurzen Beschreibung des Problems, deinem Ger&auml;tetyp und der
+                    iOS-Version. Wir k&uuml;mmern uns darum.
+                </p>
+            </details>
+        </section>
+
+        <div class="links">
+            <a href="mailto:fintext@web.de">E-Mail schreiben</a>
+            <a href="https://sors22.github.io/fintext-privacy/" class="secondary">Datenschutz</a>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 FinText. Alle Rechte vorbehalten.</p>
+            <p>Version 0.2.01</p>
+        </footer>
+    </div>
+</body>
+</html>
