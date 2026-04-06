@@ -247,7 +247,7 @@
 
 <section class="hero">
     <div class="container">
-        <div class="hero-badge">Neu: Kassenbonscanner &amp; Live-Sync</div>
+        <div class="hero-badge">Neu: Live-Sync &amp; intelligentes Budget</div>
         <h1>FinText</h1>
         <p>Dein privater Haushaltsplaner. Volle Kontrolle &uuml;ber deine Finanzen &mdash; ohne Tracking, ohne Werbung, ohne Kompromisse.</p>
         <a href="https://apps.apple.com/de/app/fintext/id6761513284" class="hero-cta">
@@ -286,10 +286,10 @@
                 <h3>Intelligentes Budget</h3>
                 <p>Lernender Algorithmus passt Budgetgewichtungen an dein Ausgabeverhalten an. Ampelsystem zeigt auf einen Blick wo du stehst.</p>
             </div>
-            <div class="usp-card">
+            <div class="usp-card" style="border: 1px solid rgba(10,132,255,0.3); background: linear-gradient(135deg, rgba(10,132,255,0.08), rgba(94,92,230,0.08));">
                 <div class="usp-icon">&#x1f4f1;</div>
-                <h3>Kassenzettel scannen</h3>
-                <p>Bon fotografieren, Artikel werden automatisch erkannt und kategorisiert. Lernfunktion: Korrekturen werden f&uuml;r n&auml;chstes Mal gespeichert.</p>
+                <h3>Kassenzettel scannen <span style="font-size: 12px; color: var(--accent); background: rgba(10,132,255,0.15); padding: 2px 8px; border-radius: 6px; vertical-align: middle;">Coming Soon</span></h3>
+                <p>Bon fotografieren, Artikel werden automatisch erkannt und kategorisiert. Komplett lokal &mdash; keine Cloud, keine API. Kommt mit dem n&auml;chsten gro&szlig;en Update.</p>
             </div>
             <div class="usp-card">
                 <div class="usp-icon">&#x1f3af;</div>
@@ -416,6 +416,51 @@
         </div>
     </section>
 </div>
+
+<section class="container" style="padding: 80px 24px;">
+    <div style="background: var(--card); border-radius: 24px; padding: 48px; border: 1px solid rgba(255,255,255,0.06);">
+        <h2 style="text-align: center; font-size: 32px; margin-bottom: 40px;">Roadmap &mdash; Was kommt als N&auml;chstes</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                    <span style="background: var(--accent); color: white; padding: 4px 12px; border-radius: 8px; font-size: 13px; font-weight: 700;">v0.3</span>
+                    <span style="color: var(--accent); font-weight: 600;">Kassenbonscanner</span>
+                </div>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f4f7; Bon scannen per Kamera oder Foto-Bibliothek</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f916; Lokale KI-Texterkennung (kein Server)</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f3f7; Automatische Kategorie-Zuordnung</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f4dd; Pr&uuml;f-Ansicht vor dem Speichern</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f9e0; Lernfunktion: wird mit jeder Korrektur besser</li>
+                </ul>
+            </div>
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                    <span style="background: var(--green); color: black; padding: 4px 12px; border-radius: 8px; font-size: 13px; font-weight: 700;">v0.4</span>
+                    <span style="color: var(--green); font-weight: 600;">Mehrsprachigkeit</span>
+                </div>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f1e9;&#x1f1ea; Deutsch (aktuell)</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f1ec;&#x1f1e7; Englisch</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f1ea;&#x1f1f8; Spanisch</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f1eb;&#x1f1f7; Franz&ouml;sisch</li>
+                </ul>
+            </div>
+            <div>
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                    <span style="background: var(--orange); color: black; padding: 4px 12px; border-radius: 8px; font-size: 13px; font-weight: 700;">v1.0</span>
+                    <span style="color: var(--orange); font-weight: 600;">Android &amp; mehr</span>
+                </div>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f4f1; Android-Version (Kotlin + Firebase)</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f3e6; Bankanbindung (optional)</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f4ca; Erweiterte Jahresberichte</li>
+                    <li style="padding: 4px 0; font-size: 14px; color: var(--muted);">&#x1f310; Widget f&uuml;r den Homescreen</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
 <footer>
     <p>&copy; 2026 Dinesh Vasikaran. Alle Rechte vorbehalten.</p>
