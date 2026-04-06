@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinText — Dein privater Haushaltsplaner</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #14141c;
+            --card: #1c1c28;
+            --text: #f5f5f7;
+            --muted: #8e8e93;
+            --accent: #0a84ff;
+            --green: #30d158;
+            --orange: #ff9f0a;
+            --pink: #ff375f;
+            --gradient-start: #0a84ff;
+            --gradient-end: #5e5ce6;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 100px 24px 60px;
+            background: linear-gradient(180deg, rgba(10,132,255,0.15) 0%, transparent 60%);
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(10,132,255,0.2);
+            border: 1px solid rgba(10,132,255,0.3);
+            border-radius: 20px;
+            font-size: 13px;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: var(--accent);
+            color: white;
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .hero-cta:hover { opacity: 0.85; }
+
+        /* Screenshots Carousel */
+        .screenshots {
+            padding: 40px 0 80px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .screenshots-inner {
+            display: flex;
+            gap: 20px;
+            padding: 0 24px;
+            width: max-content;
+        }
+        .screenshots img {
+            height: 500px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+        }
+
+        /* USP Grid */
+        .usp-section { padding: 80px 0; }
+        .usp-section h2 {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            letter-spacing: -1px;
+        }
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .usp-card {
+            background: var(--card);
+            border-radius: 20px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .usp-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+        .usp-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .usp-card p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* Feature Sections */
+        .feature {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .feature.reverse { flex-direction: row-reverse; }
+        .feature-text { flex: 1; min-width: 300px; }
+        .feature-text .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+        .tag-green { background: rgba(48,209,88,0.15); color: var(--green); }
+        .tag-blue { background: rgba(10,132,255,0.15); color: var(--accent); }
+        .tag-orange { background: rgba(255,159,10,0.15); color: var(--orange); }
+        .tag-pink { background: rgba(255,55,95,0.15); color: var(--pink); }
+        .feature-text h3 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        .feature-text p {
+            font-size: 17px;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+        .feature-text ul {
+            margin-top: 16px;
+            list-style: none;
+        }
+        .feature-text li {
+            padding: 6px 0;
+            font-size: 15px;
+            color: var(--muted);
+        }
+        .feature-text li::before {
+            content: "\2713  ";
+            color: var(--green);
+            font-weight: 700;
+        }
+        .feature-image { flex: 1; min-width: 280px; text-align: center; }
+        .feature-image img {
+            max-height: 480px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        /* Use Cases */
+        .usecases { padding: 80px 0; background: var(--surface); border-radius: 32px; margin: 40px 0; }
+        .usecases h2 { text-align: center; font-size: 36px; font-weight: 700; margin-bottom: 60px; }
+        .usecase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            padding: 0 40px;
+        }
+        .usecase {
+            text-align: center;
+            padding: 32px 20px;
+        }
+        .usecase-emoji { font-size: 48px; margin-bottom: 16px; }
+        .usecase h4 { font-size: 20px; margin-bottom: 8px; }
+        .usecase p { font-size: 14px; color: var(--muted); }
+
+        /* Privacy Banner */
+        .privacy-banner {
+            text-align: center;
+            padding: 80px 24px;
+            background: linear-gradient(135deg, rgba(48,209,88,0.08), rgba(10,132,255,0.08));
+            border-radius: 32px;
+            margin: 40px 0;
+        }
+        .privacy-banner h2 { font-size: 36px; margin-bottom: 16px; }
+        .privacy-banner p { font-size: 18px; color: var(--muted); max-width: 600px; margin: 0 auto 32px; }
+        .privacy-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .privacy-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 12px;
+            font-size: 15px;
+        }
+        .privacy-check { color: var(--green); font-weight: 700; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        footer p { color: var(--muted); font-size: 14px; margin: 4px 0; }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .feature { flex-direction: column !important; }
+            .screenshots img { height: 380px; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">Neu: Kassenbonscanner &amp; Live-Sync</div>
+        <h1>FinText</h1>
+        <p>Dein privater Haushaltsplaner. Volle Kontrolle &uuml;ber deine Finanzen &mdash; ohne Tracking, ohne Werbung, ohne Kompromisse.</p>
+        <a href="https://apps.apple.com/app/fintext/id6744210844" class="hero-cta">
+            Im App Store laden
+        </a>
+    </div>
+</section>
+
+<section class="screenshots">
+    <div class="screenshots-inner">
+        <img src="img/01-Uebersicht.png" alt="FinText Uebersicht">
+        <img src="img/04-Insights.png" alt="FinText Insights">
+        <img src="img/03-Fixkosten.png" alt="FinText Fixkosten">
+        <img src="img/05-Kategorien.png" alt="FinText Kategorien">
+        <img src="img/02-Willkommen.png" alt="FinText Willkommen">
+    </div>
+</section>
+
+<div class="container">
+
+    <section class="usp-section">
+        <h2>Warum FinText?</h2>
+        <div class="usp-grid">
+            <div class="usp-card">
+                <div class="usp-icon">&#x1f512;</div>
+                <h3>100% Privat</h3>
+                <p>Keine Datenerhebung, kein Tracking, keine Werbung, keine Drittanbieter. Deine Finanzdaten geh&ouml;ren nur dir &mdash; verschl&uuml;sselt und lokal gespeichert.</p>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">&#x1f465;</div>
+                <h3>Gemeinsam planen</h3>
+                <p>Teile dein Haushaltsbuch per Einladungscode mit Partner, Familie oder WG. Live-Synchronisation alle 15 Sekunden. Ende-zu-Ende verschl&uuml;sselt.</p>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">&#x1f4ca;</div>
+                <h3>Intelligentes Budget</h3>
+                <p>Lernender Algorithmus passt Budgetgewichtungen an dein Ausgabeverhalten an. Ampelsystem zeigt auf einen Blick wo du stehst.</p>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">&#x1f4f1;</div>
+                <h3>Kassenzettel scannen</h3>
+                <p>Bon fotografieren, Artikel werden automatisch erkannt und kategorisiert. Lernfunktion: Korrekturen werden f&uuml;r n&auml;chstes Mal gespeichert.</p>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">&#x1f3af;</div>
+                <h3>Sparziele verfolgen</h3>
+                <p>Subkonten mit Fortschrittsbalken zum Sparziel. Vier Bereiche: Gebunden, Sparen, Wants, Erspartes. Automatische &Uuml;bertr&auml;ge.</p>
+            </div>
+            <div class="usp-card">
+                <div class="usp-icon">&#x1f4c8;</div>
+                <h3>Trends erkennen</h3>
+                <p>Insights-Tab mit Monatsvergleich: Einnahmen, Ausgaben und Saldo vs. Vormonat mit Trendpfeilen und Prozentangaben.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature">
+        <div class="feature-text">
+            <span class="tag tag-green">Dashboard</span>
+            <h3>Alles auf einen Blick</h3>
+            <p>Vier KPI-Kacheln zeigen dir sofort: Einnahmen, variable Ausgaben, Fixkosten und Saldo. Plus Tagesbudget-Anzeige f&uuml;r den aktuellen Monat.</p>
+            <ul>
+                <li>Einnahmen &amp; Ausgaben nach Kategorie aufgeschl&uuml;sselt</li>
+                <li>Kuchen- oder Balkendiagramme konfigurierbar</li>
+                <li>Tagesrest: &bdquo;12,50 &euro;/Tag (8 Tage)&ldquo;</li>
+                <li>Suche &uuml;ber die Lupe &mdash; sofort finden</li>
+            </ul>
+        </div>
+        <div class="feature-image">
+            <img src="img/01-Uebersicht.png" alt="Uebersicht">
+        </div>
+    </section>
+
+    <section class="feature reverse">
+        <div class="feature-text">
+            <span class="tag tag-blue">Fixkosten</span>
+            <h3>Einmal einstellen, automatisch &uuml;bertragen</h3>
+            <p>Fixkosten werden automatisch in alle Folgemonate &uuml;bernommen. &Auml;nderungen propagieren sofort. Auch nach Excel-Import.</p>
+            <ul>
+                <li>Fixkosten pro Kategorie mit Detailzeilen</li>
+                <li>Abrechnungsrhythmen: monatlich bis j&auml;hrlich</li>
+                <li>Negative Werte nur f&uuml;r Subkonten, nicht f&uuml;r Gesamtsumme</li>
+                <li>Carry-Forward: leere Monate erben vom Vormonat</li>
+            </ul>
+        </div>
+        <div class="feature-image">
+            <img src="img/03-Fixkosten.png" alt="Fixkosten">
+        </div>
+    </section>
+
+    <section class="feature">
+        <div class="feature-text">
+            <span class="tag tag-orange">Insights</span>
+            <h3>Deine Finanz-Trends auf einen Blick</h3>
+            <p>Vergleiche jeden Monat mit dem Vormonat. Trendpfeile und Prozentangaben zeigen sofort ob sich deine Finanzen verbessern oder verschlechtern.</p>
+            <ul>
+                <li>Einnahmen, Ausgaben, Fixkosten, Saldo im Vergleich</li>
+                <li>Gr&uuml;n = positive Entwicklung, Rot = Achtung</li>
+                <li>Top 5 Ausgaben-Kategorien des Monats</li>
+                <li>Format: &bdquo;+23.5%&ldquo; / &bdquo;-12.3%&ldquo;</li>
+            </ul>
+        </div>
+        <div class="feature-image">
+            <img src="img/04-Insights.png" alt="Insights">
+        </div>
+    </section>
+
+    <section class="feature reverse">
+        <div class="feature-text">
+            <span class="tag tag-pink">Personalisierung</span>
+            <h3>Dein Budget, deine Regeln</h3>
+            <p>Jede Kategorie individuell gestalten mit Symbolen und Farben. Kategorien hinzuf&uuml;gen, deaktivieren oder l&ouml;schen &mdash; bestehende Eintr&auml;ge bleiben erhalten.</p>
+            <ul>
+                <li>30 SF Symbols zur Auswahl pro Kategorie</li>
+                <li>12 Farben f&uuml;r Diagramme und Legenden</li>
+                <li>Deaktivierte Kategorien: nur zuk&uuml;nftige betroffen</li>
+                <li>L&ouml;schen per Long-Press mit Sicherheitsabfrage</li>
+            </ul>
+        </div>
+        <div class="feature-image">
+            <img src="img/05-Kategorien.png" alt="Kategorien">
+        </div>
+    </section>
+
+</div>
+
+<section class="usecases">
+    <h2>F&uuml;r jede Lebenssituation</h2>
+    <div class="usecase-grid">
+        <div class="usecase">
+            <div class="usecase-emoji">&#x1f3e0;</div>
+            <h4>Familien-Haushalt</h4>
+            <p>Gemeinsames Haushaltsbuch f&uuml;r die ganze Familie. Wer hat was ausgegeben? Automatische Zuordnung zu Personen.</p>
+        </div>
+        <div class="usecase">
+            <div class="usecase-emoji">&#x1f6cb;</div>
+            <h4>WG-Finanzen</h4>
+            <p>Einladungscode an Mitbewohner schicken, fertig. Jeder sieht die gemeinsamen Ausgaben. Fair und transparent.</p>
+        </div>
+        <div class="usecase">
+            <div class="usecase-emoji">&#x1f46b;</div>
+            <h4>Paar-Haushalt</h4>
+            <p>Gemeinsam und getrennt: Ausgaben dem richtigen Partner zuordnen. Subkonten f&uuml;r gemeinsame Ziele (Urlaub, Auto, Notgroschen).</p>
+        </div>
+        <div class="usecase">
+            <div class="usecase-emoji">&#x1f9d1;</div>
+            <h4>Solo-Budget</h4>
+            <p>Dein pers&ouml;nliches Haushaltsbuch. Excel importieren, Fixkosten eintragen, Budget automatisch berechnen lassen.</p>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <section class="privacy-banner">
+        <h2>Datenschutz ist kein Feature &mdash; es ist das Fundament</h2>
+        <p>FinText wurde von Grund auf f&uuml;r Menschen gebaut, die ihre Daten sch&uuml;tzen wollen.</p>
+        <div class="privacy-list">
+            <div class="privacy-item"><span class="privacy-check">&#x2713;</span> Keine Datenerhebung</div>
+            <div class="privacy-item"><span class="privacy-check">&#x2713;</span> Kein Tracking</div>
+            <div class="privacy-item"><span class="privacy-check">&#x2713;</span> Keine Werbung</div>
+            <div class="privacy-item"><span class="privacy-check">&#x2713;</span> Keine Drittanbieter</div>
+            <div class="privacy-item"><span class="privacy-check">&#x2713;</span> AES-256 Verschl&uuml;sselung</div>
+            <div class="privacy-item"><span class="privacy-check">&#x2713;</span> Lokale Speicherung</div>
+            <div class="privacy-item"><span class="privacy-check">&#x2713;</span> iCloud nur &uuml;ber eigene Apple-ID</div>
+            <div class="privacy-item"><span class="privacy-check">&#x2713;</span> Open-Source Abh&auml;ngigkeiten</div>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 FinText. Alle Rechte vorbehalten.</p>
+    <p><a href="privacy.html">Datenschutzerkl&auml;rung</a> &middot; <a href="support.html">Support</a> &middot; <a href="mailto:fintext@web.de">fintext@web.de</a></p>
+    <p style="margin-top: 12px; font-size: 12px;">Version 0.2.30</p>
+</footer>
+
+</body>
+</html>
